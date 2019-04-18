@@ -56,6 +56,7 @@ App = {
 
   render: async function () {
     var globalAdmin = null;
+    var candidates = [];
     var _numberOfVoters = 0;
     var _maxVoters = null;
     var isAdmin = false;
@@ -96,6 +97,7 @@ App = {
           $("#accountAddress").append(" (<b>Admin</b>)");
         } else {
           $("#accountAddress").append(" (<b>User</b>)");
+          $('#chart_div').remove();
         }
       }
     });
@@ -105,6 +107,7 @@ App = {
       electionInstance = instance;
       return electionInstance.candidatesCount();
     }).then(function (candidatesCount) {
+      candidates = [];
       var candidatesResults = $("#candidatesResults");
 
       var candidatesSelect = $('#candidatesSelect');
@@ -122,6 +125,10 @@ App = {
             // Render candidate Result
             var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td class=\"count\">" + voteCount + "</td></tr>"
             candidatesResults.append(candidateTemplate);
+            candidates.push({
+              names: name,
+              votes: voteCount
+            });
 
             // Render candidate ballot option
             var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
@@ -135,19 +142,34 @@ App = {
       if (isAdmin) {
         if (_numberOfVoters == _maxVoters) {
           $('form').html(`
-            <div>
-              <h2>Vote count: ${_numberOfVoters}/${_maxVoters}</h2>
-              <h1>-Voting has finished</h1>
+            <div style="text-align: center;">
+              <h2>Vote count: ${_numberOfVoters}/${_maxVoters} (Voting has finished)</h2>
             </div>
           `);
         } else {
           $('form').html(`
-            <div>
-              <h2>Vote count: ${_numberOfVoters}/${_maxVoters}</h2>
-              <h1>-Voting in progress</h1>
+            <div style="text-align: center;">
+              <h2>Vote count: ${_numberOfVoters}/${_maxVoters} (Voting in progress)</h2>
             </div>
           `);
         }
+        new Chart(document.getElementById("pie_chart"), {
+          type: 'pie',
+          data: {
+            labels: candidates.map(x => x.names),
+            datasets: [{
+              label: "Population (millions)",
+              backgroundColor: ["#f16a70", "#b1d877", "#8cdcda", "#4d4d4d"],
+              data: candidates.map(x => x.votes)
+            }]
+          },
+          options: {
+            title: {
+              display: true,
+              text: ""
+            }
+          }
+        });
         $("#cadidates_tbl").show();
       }
       // Do not allow a user to vote

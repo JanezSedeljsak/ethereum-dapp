@@ -1,16 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
 
 * {
-    font-family: 'PT Sans', sans-serif !important;
+  font-family: 'PT Sans', sans-serif !important;
 }
 body {
-    display: none;
-    background: linear-gradient(to right, #aaaaaa, #c7c7c7, #636375);
+  
+  background: url("./back.jpg");
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  display: none;
+    
 }
 
 h1, label, h2 {
-    
+    text-shadow: 0 0 5px grey;
     color: #009879;
+}
+
+label {
+  font-size: 18px;
+}
+
+label, button {
+  margin-left: 1%;
 }
 
 hr { display: block; 
@@ -24,15 +36,15 @@ hr { display: block;
 
 #cadidates_tbl {
     border-collapse: collapse;
-    font-size: 0.9em;
+    font-size: 1.2em;
     min-width: 400px;
-    border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    table-layout: fixed;
   }
   
   #cadidates_tbl thead tr {
-    background-color: #009879;
+    background-color: #00987a81;
     color: #ffffff;
     text-align: left;
     font-weight: bold;
@@ -45,19 +57,24 @@ hr { display: block;
   
   #cadidates_tbl tbody tr {
     border-bottom: 1px solid #dddddd;
+    transition: .1s all;
   }
+  #cadidates_tbl tbody tr td { transition: .2s all }
 
   #cadidates_tbl tbody tr:hover {
-    background-color: #494949 !important;
-    color: white;
+    padding-left: 10%;
+    width: 90%;
+    cursor: pointer;
+    color: #070707;
+  }
+
+  #cadidates_tbl tbody tr:hover td {
+    padding-left: 2%;
+    font-weight: 800;
   }
   
   #cadidates_tbl tbody tr:nth-of-type(even) {
-    background-color: #d1d1d1;
-  }
-  
-  #cadidates_tbl tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    background-color: #24242414;
   }
   
   #cadidates_tbl tbody tr.active-row {
@@ -67,4 +84,13 @@ hr { display: block;
   
   #accountAddress {
       font-size: 18px;
+  }
+
+  .container {
+    z-index: 10;
+    width: 90%;
+    box-shadow: 12px 0 15px -4px #444646be, -12px 0 8px -4px #44464685;
+    background: linear-gradient(to right, #aaaaaab4, #c7c7c7b4, #636375b7);
+    padding-bottom: 15vh;
+    min-height: 100vh;
   }
