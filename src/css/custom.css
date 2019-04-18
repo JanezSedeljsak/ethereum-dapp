@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+* {
+    font-family: 'PT Sans', sans-serif !important;
+}
+body {
+    display: none;
+    background: linear-gradient(to right, #aaaaaa, #c7c7c7, #636375);
+}
+
+h1, label, h2 {
+    
+    color: #009879;
+}
+
+hr { display: block; 
+    height: 1px;
+    border: 0; 
+    border-top: 2px solid rgb(37, 177, 142);
+    margin: 1em 0; 
+    padding: 0; 
+    box-shadow: 0 4px 2px -2px black;
+}
+
+#cadidates_tbl {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  #cadidates_tbl thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  #cadidates_tbl th,
+  #cadidates_tbl td {
+    padding: 12px 15px;
+  }
+  
+  #cadidates_tbl tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+
+  #cadidates_tbl tbody tr:hover {
+    background-color: #494949 !important;
+    color: white;
+  }
+  
+  #cadidates_tbl tbody tr:nth-of-type(even) {
+    background-color: #d1d1d1;
+  }
+  
+  #cadidates_tbl tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  #cadidates_tbl tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  
+  #accountAddress {
+      font-size: 18px;
+  }
